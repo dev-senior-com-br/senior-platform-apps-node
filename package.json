@@ -1,6 +1,6 @@
 {
   "name": "@seniorsistemas/senior-platform-apps",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Biblioteca para utilização das APIs de aplicativos da plataforma da Senior Sistemas.",
   "main": "./dist/index.js",
   "scripts": {
