@@ -4,7 +4,7 @@ import { Page } from "./page";
 /**
  * Registro com as informações da landing page e as informações da página.
  */
-export class LandingPage {
+export interface LandingPage {
     /**
     * Identificador da landing page no formato landing://{domínio do tenant}/{identificador único da página}
     */
