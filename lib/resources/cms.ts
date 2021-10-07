@@ -28,7 +28,10 @@ import { GetWidgetIn } from 'lib/model/cms/getWidget';
 import { Widget } from 'lib/model/cms/widget';
 import { ListFactoryDefaultWidgetsIn, ListFactoryDefaultWidgetsOut } from 'lib/model/cms/listFactoryDefaultWidgets';
 
-export default class Workflow extends RequestClient {
+/**
+ * Service responsável pela comunicação com o serviço de Cms.
+ */
+export default class Cms extends RequestClient {
     constructor(seniorApi: SeniorApi) {
         super(seniorApi, 'platform', 'cms');
     }
@@ -241,7 +244,7 @@ export default class Workflow extends RequestClient {
      * @return Payload de saída com a lista de landing pages
      */
     getUserLandingPages(): Promise<RequestReturn<GetUserLandingPagesOut>> {
-        const clientOptions = this.buildClientOptions('actions/getUserLandingPages');
+        const clientOptions = this.buildClientOptions('actions/getUserLandingPages', new Object());
         return this.request(clientOptions);
     }
 
@@ -269,7 +272,7 @@ export default class Workflow extends RequestClient {
     * Apaga todas as landing pages personalizadas de todos os usuários.
     */
     removeAllPersonalLandingPages(): Promise<RequestReturn<void>> {
-        const clientOptions = this.buildClientOptions('actions/removeAllPersonalLandingPages');
+        const clientOptions = this.buildClientOptions('actions/removeAllPersonalLandingPages', new Object());
         return this.request(clientOptions);
     }
 
@@ -319,7 +322,7 @@ export default class Workflow extends RequestClient {
    * @param payload Objeto enviado no body da requisição.
    * @returns ClientOptions com as informações necessárias para realizar as requisições.
    */
-    private buildClientOptions<T>(primitiveUrl: string, payload?: T): any {
+    private buildClientOptions<T>(primitiveUrl: string, payload: T): any {
         return {
             url: this.getUrlPath(primitiveUrl),
             method: HttpMethod.POST,
