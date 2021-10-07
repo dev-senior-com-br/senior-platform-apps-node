@@ -4,6 +4,7 @@ Esta biblioteca facilita o uso das APIs de aplicativos da plataforma da Senior S
 
 Atualmente, as APIs disponibilizadas pelo SDK são:
 - **Workflow**
+- **Gerenciamento de Conteúdo - CMS**
 
 Alguns serviços como o HCM e SAM possuem suas próprias bibliotecas, que podem ser encontradas no perfil do [Dev Senior no GitHub](https://github.com/dev-senior-com-br).
 
@@ -79,6 +80,7 @@ Alguns exemplos fazem uso de variáveis adicionais, como no caso do Workflow dem
 ### Exemplos implementados
 
 * [Workflow (BPM)](examples/workflow-examples.js)
+* [Gerenciamento de Conteúdo - CMS](examples/cms-examples.js)
 
 ## Contribuições
 
