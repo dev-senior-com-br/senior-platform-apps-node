@@ -1,32 +1,5 @@
+import * as models from '../model/cms';
 import { SeniorApi, RequestClient, RequestReturn, HttpMethod } from '@seniorsistemas/senior-core';
-import { RegisterAnalyticIn, RegisterAnalyticOut } from 'lib/model/cms/registerAnalytic';
-import { ListAnalyticsIn, ListAnalyticsOut } from 'lib/model/cms/listAnalytics';
-import { GetAnalyticIn, GetAnalyticOut } from 'lib/model/cms/getAnalytic';
-import { GetAnalyticsIn, GetAnalyticsOut } from 'lib/model/cms/getAnalytics';
-import { CopyAnalyticIn, CopyAnalyticOut } from 'lib/model/cms/copyAnalytic';
-import { UnregisterAnalyticIn, UnregisterAnalyticOut } from 'lib/model/cms/unregisterAnalytic';
-import { CountAnalyticsDatasetIn, CountAnalyticsDatasetOut } from 'lib/model/cms/countAnalyticsDataset';
-import { ListFactoryDefaultAnalyticsIn, ListFactoryDefaultAnalyticsOut } from 'lib/model/cms/listFactoryDefaultAnalytics';
-import { SetPageAnalyticFilterIn } from 'lib/model/cms/setPageAnalyticFilter';
-import { SavePageIn, SavePageOut } from 'lib/model/cms/savePage';
-import { ListPagesIn, ListPagesOut } from 'lib/model/cms/listPages';
-import { GetPageIn, GetPageOut } from 'lib/model/cms/getPage';
-import { GetPageResourcesIn, GetPageResourcesOut } from 'lib/model/cms/getPageResources';
-import { CopyPageIn, CopyPageOut } from 'lib/model/cms/copyPage';
-import { RemovePageIn, RemovePageOut } from 'lib/model/cms/removePage';
-import { ListFactoryDefaultPagesIn, ListFactoryDefaultPagesOut } from 'lib/model/cms/listFactoryDefaultPages';
-import { SaveLandingPageIn, SaveLandingPageOut } from 'lib/model/cms/saveLandingPage';
-import { SaveLandingPagesOrderIn } from 'lib/model/cms/saveLandingPagesOrder';
-import { ListLandingPagesIn, ListLandingPagesOut } from 'lib/model/cms/listLandingPages';
-import { GetLandingPageIn, GetLandingPageOut } from 'lib/model/cms/getLandingPage';
-import { GetUserLandingPagesOut } from 'lib/model/cms/getUserLandingPages';
-import { RemoveLandingPageIn, RemoveLandingPageOut } from 'lib/model/cms/removeLandingPage';
-import { RemovePersonalLandingPagesIn } from 'lib/model/cms/removePersonalLandingPages';
-import { ListFactoryDefaultLandingPagesIn, ListFactoryDefaultLandingPagesOut } from 'lib/model/cms/listFactoryDefaultLandingPages';
-import { ListWidgetsIn, ListWidgetsOut } from 'lib/model/cms/listWidgets';
-import { GetWidgetIn } from 'lib/model/cms/getWidget';
-import { Widget } from 'lib/model/cms/widget';
-import { ListFactoryDefaultWidgetsIn, ListFactoryDefaultWidgetsOut } from 'lib/model/cms/listFactoryDefaultWidgets';
 
 /**
  * Service responsável pela comunicação com o serviço de Cms.
@@ -41,7 +14,7 @@ export default class Cms extends RequestClient {
       * @param payload Payload de entrada com informações necessárias para registrar um componente do tipo analytic.
       * @return Payload de saída com o identificador do analytic criado.
       */
-    registerAnalytic(payload: RegisterAnalyticIn): Promise<RequestReturn<RegisterAnalyticOut>> {
+    registerAnalytic(payload: models.RegisterAnalyticIn): Promise<RequestReturn<models.RegisterAnalyticOut>> {
         const clientOptions = this.buildClientOptions('actions/registerAnalytic', payload);
         return this.request(clientOptions);
     }
@@ -51,7 +24,7 @@ export default class Cms extends RequestClient {
      * @param payload Payload de entrada com informações necessárias para listar todos os componentes do tipo analytics.
      * @return Payload de saída com a lista de todos os componentes do tipo analytics.
      */
-    listAnalytics(payload: ListAnalyticsIn): Promise<RequestReturn<ListAnalyticsOut>> {
+    listAnalytics(payload: models.ListAnalyticsIn): Promise<RequestReturn<models.ListAnalyticsOut>> {
         const clientOptions = this.buildClientOptions('queries/listAnalytics', payload);
         return this.request(clientOptions);
     }
@@ -61,7 +34,7 @@ export default class Cms extends RequestClient {
      * @param payload Payload de entrada com informações necessárias para consultar um componente do tipo analytic.
      * @return Payload de saída com o analytic recuperado.
      */
-    getAnalytic(payload: GetAnalyticIn): Promise<RequestReturn<GetAnalyticOut>> {
+    getAnalytic(payload: models.GetAnalyticIn): Promise<RequestReturn<models.GetAnalyticOut>> {
         const clientOptions = this.buildClientOptions('queries/getAnalytic', payload);
         return this.request(clientOptions);
     }
@@ -71,7 +44,7 @@ export default class Cms extends RequestClient {
      * @param payload Payload de entrada com informações necessárias para consultar uma lista de componentes do tipo analytic.
      * @return Payload de saída com a lista de analytics recuperados.
      */
-    getAnalytics(payload: GetAnalyticsIn): Promise<RequestReturn<GetAnalyticsOut>> {
+    getAnalytics(payload: models.GetAnalyticsIn): Promise<RequestReturn<models.GetAnalyticsOut>> {
         const clientOptions = this.buildClientOptions('queries/getAnalytics', payload);
         return this.request(clientOptions);
     }
@@ -81,7 +54,7 @@ export default class Cms extends RequestClient {
      * @param payload Payload de entrada com informações necessárias para copiar um analytic e seu conteúdo.
      * @return Payload de saída com o identificador do analytic criado.
      */
-    copyAnalytic(payload: CopyAnalyticIn): Promise<RequestReturn<CopyAnalyticOut>> {
+    copyAnalytic(payload: models.CopyAnalyticIn): Promise<RequestReturn<models.CopyAnalyticOut>> {
         const clientOptions = this.buildClientOptions('actions/copyAnalytic', payload);
         return this.request(clientOptions);
     }
@@ -91,7 +64,7 @@ export default class Cms extends RequestClient {
      * @param payload Payload de entrada com informações necessárias para cancelar o registro de um componente do tipo analytic.
      * @return Payload de saída com o identificador do analytic com o registro cancelado.
      */
-    unregisterAnalytic(payload: UnregisterAnalyticIn): Promise<RequestReturn<UnregisterAnalyticOut>> {
+    unregisterAnalytic(payload: models.UnregisterAnalyticIn): Promise<RequestReturn<models.UnregisterAnalyticOut>> {
         const clientOptions = this.buildClientOptions('actions/unregisterAnalytic', payload);
         return this.request(clientOptions);
     }
@@ -101,7 +74,7 @@ export default class Cms extends RequestClient {
      * @param payload Payload de entrada com informações necessárias para retornar a quantidade de analytics que utilizam o dataset.
      * @return Payload de saída com a quantidade de analytics que utilizam o dataset.
      */
-    countAnalyticsDataset(payload: CountAnalyticsDatasetIn): Promise<RequestReturn<CountAnalyticsDatasetOut>> {
+    countAnalyticsDataset(payload: models.CountAnalyticsDatasetIn): Promise<RequestReturn<models.CountAnalyticsDatasetOut>> {
         const clientOptions = this.buildClientOptions('queries/countAnalyticsDataset', payload);
         return this.request(clientOptions);
     }
@@ -111,7 +84,7 @@ export default class Cms extends RequestClient {
      * @param payload Payload de entrada com informações necessárias para listar os componentes do tipo analytics padrões de fábrica.
      * @return Payload de saída com a lista de componentes do tipo analytics padrões de fábrica.
      */
-    listFactoryDefaultAnalytics(payload: ListFactoryDefaultAnalyticsIn): Promise<RequestReturn<ListFactoryDefaultAnalyticsOut>> {
+    listFactoryDefaultAnalytics(payload: models.ListFactoryDefaultAnalyticsIn): Promise<RequestReturn<models.ListFactoryDefaultAnalyticsOut>> {
         const clientOptions = this.buildClientOptions('queries/listFactoryDefaultAnalytics', payload);
         return this.request(clientOptions);
     }
@@ -120,7 +93,7 @@ export default class Cms extends RequestClient {
      * Salva os filtros alterados do analytic na página para o usuário do contexto.
      * @param payload Payload de entrada com informações necessárias para salvar os filtros alterados do analytic na página para o usuário do contexto.
      */
-    setPageAnalyticFilter(payload: SetPageAnalyticFilterIn): Promise<RequestReturn<void>> {
+    setPageAnalyticFilter(payload: models.SetPageAnalyticFilterIn): Promise<RequestReturn<void>> {
         const clientOptions = this.buildClientOptions('actions/setPageAnalyticFilter', payload);
         return this.request(clientOptions);
     }
@@ -130,7 +103,7 @@ export default class Cms extends RequestClient {
      * @param payload Payload de entrada com informações necessárias criar ou atualizar uma página.
      * @return Payload de saída com o identificador da página.
      */
-    savePage(payload: SavePageIn): Promise<RequestReturn<SavePageOut>> {
+    savePage(payload: models.SavePageIn): Promise<RequestReturn<models.SavePageOut>> {
         const clientOptions = this.buildClientOptions('actions/savePage', payload);
         return this.request(clientOptions);
     }
@@ -140,7 +113,7 @@ export default class Cms extends RequestClient {
      * @param payload Payload de entrada com informações necessárias para listar as páginas que o usuário tem acesso para visualizar.
      * @return Payload de saída com as páginas que o usuário tem acesso para visualizar.
      */
-    listPages(payload: ListPagesIn): Promise<RequestReturn<ListPagesOut>> {
+    listPages(payload: models.ListPagesIn): Promise<RequestReturn<models.ListPagesOut>> {
         const clientOptions = this.buildClientOptions('actions/listPages', payload);
         return this.request(clientOptions);
     }
@@ -150,7 +123,7 @@ export default class Cms extends RequestClient {
      * @param payload Payload de entrada com informações necessárias para buscar as informações de uma página.
      * @return Payload de saída com as informações de uma página.
      */
-    getPage(payload: GetPageIn): Promise<RequestReturn<GetPageOut>> {
+    getPage(payload: models.GetPageIn): Promise<RequestReturn<models.GetPageOut>> {
         const clientOptions = this.buildClientOptions('actions/getPage', payload);
         return this.request(clientOptions);
     }
@@ -160,7 +133,7 @@ export default class Cms extends RequestClient {
      * @param payload Payload de entrada com informações necessárias para consultar os recursos utilizados para a exibição de uma página.
      * @return Payload de saída com os recursos utilizados para a exibição de uma página.
      */
-    getPageResources(payload: GetPageResourcesIn): Promise<RequestReturn<GetPageResourcesOut>> {
+    getPageResources(payload: models.GetPageResourcesIn): Promise<RequestReturn<models.GetPageResourcesOut>> {
         const clientOptions = this.buildClientOptions('queries/getPageResources', payload);
         return this.request(clientOptions);
     }
@@ -170,7 +143,7 @@ export default class Cms extends RequestClient {
      * @param payload Payload de entrada com informações necessárias para copiar uma página.
      * @return Payload de saída com o identificador da página criada.
      */
-    copyPage(payload: CopyPageIn): Promise<RequestReturn<CopyPageOut>> {
+    copyPage(payload: models.CopyPageIn): Promise<RequestReturn<models.CopyPageOut>> {
         const clientOptions = this.buildClientOptions('actions/copyPage', payload);
         return this.request(clientOptions);
     }
@@ -182,7 +155,7 @@ export default class Cms extends RequestClient {
      * @param payload Payload de entrada com informações necessárias para excluir uma página.
      * @return Payload de saída com o identificador da página excluída.
      */
-    removePage(payload: RemovePageIn): Promise<RequestReturn<RemovePageOut>> {
+    removePage(payload: models.RemovePageIn): Promise<RequestReturn<models.RemovePageOut>> {
         const clientOptions = this.buildClientOptions('actions/removePage', payload);
         return this.request(clientOptions);
     }
@@ -192,7 +165,7 @@ export default class Cms extends RequestClient {
      * @param payload Payload de entrada com informações necessárias para listar as páginas padrões de fábrica.
      * @return Payload de saída com a lista de páginas padrões de fábrica.
      */
-    listFactoryDefaultPages(payload: ListFactoryDefaultPagesIn): Promise<RequestReturn<ListFactoryDefaultPagesOut>> {
+    listFactoryDefaultPages(payload: models.ListFactoryDefaultPagesIn): Promise<RequestReturn<models.ListFactoryDefaultPagesOut>> {
         const clientOptions = this.buildClientOptions('queries/listFactoryDefaultPages', payload);
         return this.request(clientOptions);
     }
@@ -204,7 +177,7 @@ export default class Cms extends RequestClient {
      * @param payload Payload de entrada com informações necessárias para adicionar uma página à landing page.
      * @return Payload de saída com o identificador da landing page.
      */
-    saveLandingPage(payload: SaveLandingPageIn): Promise<RequestReturn<SaveLandingPageOut>> {
+    saveLandingPage(payload: models.SaveLandingPageIn): Promise<RequestReturn<models.SaveLandingPageOut>> {
         const clientOptions = this.buildClientOptions('actions/saveLandingPage', payload);
         return this.request(clientOptions);
     }
@@ -213,7 +186,7 @@ export default class Cms extends RequestClient {
      * Altera a ordem das landing pages.
      * @param payload Payload de entrada com informações necessárias para alterar a ordem das landing pages.
      */
-    saveLandingPagesOrder(payload: SaveLandingPagesOrderIn): Promise<RequestReturn<void>> {
+    saveLandingPagesOrder(payload: models.SaveLandingPagesOrderIn): Promise<RequestReturn<void>> {
         const clientOptions = this.buildClientOptions('actions/saveLandingPagesOrder', payload);
         return this.request(clientOptions);
     }
@@ -224,7 +197,7 @@ export default class Cms extends RequestClient {
      * @param payload Payload de entrada com informações necessárias para listar as landing pages para administração.
      * @return Payload de saída com a lista de landing pages.
      */
-    listLandingPages(payload: ListLandingPagesIn): Promise<RequestReturn<ListLandingPagesOut>> {
+    listLandingPages(payload: models.ListLandingPagesIn): Promise<RequestReturn<models.ListLandingPagesOut>> {
         const clientOptions = this.buildClientOptions('actions/listLandingPages', payload);
         return this.request(clientOptions);
     }
@@ -234,7 +207,7 @@ export default class Cms extends RequestClient {
      * @param payload Payload de entrada com informações necessárias para buscar uma landing page.
      * @return Payload de saída com a landing page recuperada.
      */
-    getLandingPage(payload: GetLandingPageIn): Promise<RequestReturn<GetLandingPageOut>> {
+    getLandingPage(payload: models.GetLandingPageIn): Promise<RequestReturn<models.GetLandingPageOut>> {
         const clientOptions = this.buildClientOptions('actions/getLandingPage', payload);
         return this.request(clientOptions);
     }
@@ -243,7 +216,7 @@ export default class Cms extends RequestClient {
      * Lista as landing pages para visualização pelo usuário.
      * @return Payload de saída com a lista de landing pages
      */
-    getUserLandingPages(): Promise<RequestReturn<GetUserLandingPagesOut>> {
+    getUserLandingPages(): Promise<RequestReturn<models.GetUserLandingPagesOut>> {
         const clientOptions = this.buildClientOptions('actions/getUserLandingPages', new Object());
         return this.request(clientOptions);
     }
@@ -254,7 +227,7 @@ export default class Cms extends RequestClient {
      * @param payload Payload de entrada com informações necessárias para remover uma landing page.
      * @return Payload de saída com o identificador da landing page excluída.
      */
-    removeLandingPage(payload: RemoveLandingPageIn): Promise<RequestReturn<RemoveLandingPageOut>> {
+    removeLandingPage(payload: models.RemoveLandingPageIn): Promise<RequestReturn<models.RemoveLandingPageOut>> {
         const clientOptions = this.buildClientOptions('actions/removeLandingPage', payload);
         return this.request(clientOptions);
     }
@@ -263,7 +236,7 @@ export default class Cms extends RequestClient {
      * Apaga todas as landing pages personalizadas do usuário corrente ou do usuário informado.
      * @param payload Payload de entrada com informações necessárias para apagar todas as landing pages personalizadas do usuário.
      */
-    removePersonalLandingPages(payload: RemovePersonalLandingPagesIn): Promise<RequestReturn<void>> {
+    removePersonalLandingPages(payload: models.RemovePersonalLandingPagesIn): Promise<RequestReturn<void>> {
         const clientOptions = this.buildClientOptions('actions/removePersonalLandingPages', payload);
         return this.request(clientOptions);
     }
@@ -281,7 +254,7 @@ export default class Cms extends RequestClient {
      * @param payload Payload de entrada com informações necessárias para listar as landing pages padrões de fábrica.
      * @return Payload de saída com a lista das landing pages padrões de fábrica.
      */
-    listFactoryDefaultLandingPages(payload: ListFactoryDefaultLandingPagesIn): Promise<RequestReturn<ListFactoryDefaultLandingPagesOut>> {
+    listFactoryDefaultLandingPages(payload: models.ListFactoryDefaultLandingPagesIn): Promise<RequestReturn<models.ListFactoryDefaultLandingPagesOut>> {
         const clientOptions = this.buildClientOptions('queries/listFactoryDefaultLandingPages', payload);
         return this.request(clientOptions);
     }
@@ -291,7 +264,7 @@ export default class Cms extends RequestClient {
     * @param payload Payload de entrada com informações necessárias para listar todos os widgets do tenant que o usuário possui permissão para utilizar.
     * @return Payload de saída com a lista de todos os widgets do tenant que o usuário possui permissão para utilizar.
     */
-    listWidgets(payload: ListWidgetsIn): Promise<RequestReturn<ListWidgetsOut>> {
+    listWidgets(payload: models.ListWidgetsIn): Promise<RequestReturn<models.ListWidgetsOut>> {
         const clientOptions = this.buildClientOptions('queries/listWidgets', payload);
         return this.request(clientOptions);
     }
@@ -301,7 +274,7 @@ export default class Cms extends RequestClient {
     * @param payload Payload de entrada com informações necessárias para exibir as informações do widget.
     * @return Payload de saída com o widget recuperado.
     */
-    getWidget(payload: GetWidgetIn): Promise<RequestReturn<Widget>> {
+    getWidget(payload: models.GetWidgetIn): Promise<RequestReturn<models.Widget>> {
         const clientOptions = this.buildClientOptions('queries/getWidget', payload);
         return this.request(clientOptions);
     }
@@ -311,7 +284,7 @@ export default class Cms extends RequestClient {
      * @param payload Payload de entrada com informações necessárias para listar os componentes do tipo widgets padrões de fábrica.
      * @return Payload de saída com a lista de componentes do tipo widgets padrões de fábrica.
      */
-    listFactoryDefaultWidgets(payload: ListFactoryDefaultWidgetsIn): Promise<RequestReturn<ListFactoryDefaultWidgetsOut>> {
+    listFactoryDefaultWidgets(payload: models.ListFactoryDefaultWidgetsIn): Promise<RequestReturn<models.ListFactoryDefaultWidgetsOut>> {
         const clientOptions = this.buildClientOptions('queries/listFactoryDefaultWidgets', payload);
         return this.request(clientOptions);
     }
