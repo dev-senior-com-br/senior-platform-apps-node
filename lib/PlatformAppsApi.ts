@@ -1,4 +1,5 @@
 import { SeniorApi } from '@seniorsistemas/senior-core';
+import Cms from './resources/cms';
 import Workflow from './resources/workflow';
 
 /**
@@ -6,6 +7,7 @@ import Workflow from './resources/workflow';
  */
 export class PlatformAppsApi extends SeniorApi {
   #workflow!: Workflow;
+  #cms!: Cms;
 
   /**
    * Retorna o service responsável pela comunicação com o serviço de Workflow
@@ -13,5 +15,13 @@ export class PlatformAppsApi extends SeniorApi {
   get workflow(): Workflow {
     this.#workflow = this.#workflow || new Workflow(this);
     return this.#workflow;
+  }
+
+  /**
+   * Retorna o service responsável pela comunicação com o serviço do CMS
+   */
+  get cms(): Cms {
+    this.#cms = this.#cms || new Cms(this);
+    return this.#cms;
   }
 }
