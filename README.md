@@ -1,3 +1,9 @@
+# SDK Descontinuada!
+
+Caso julgue necessário o uso de uma SDK, sugerimos a utilização de geradores código a partir do swagger de cada API via ferramenta https://editor.swagger.io/ (Opção Generate Client)
+
+<hr />
+<strike>
 # Senior Plataform Apps SDK para Node
 
 Esta biblioteca facilita o uso das APIs de aplicativos da plataforma da Senior Sistemas S/A em projetos Node. Essa mesma biblioteca também está [disponível para Java](https://github.com/dev-senior-com-br/senior-platform-apps-java). A documentação completa das APIs está definida em https://dev.senior.com.br/apis_publicas/.
@@ -93,3 +99,4 @@ Criar uma issue [https://github.com/dev-senior-com-br/senior-platform-apps-node/
 ## License
 
 Copyright © 2020.
+</strike>
